@@ -1,0 +1,397 @@
+info:
+  app.name: "顺友物流货代系统"
+  app.description: "顺友物流货代系统"
+  app.version: "${project.version}"
+  build.time: "${project.buildTime}"
+
+
+health:
+  rabbit:
+    enabled: false
+
+spring:
+  profiles:
+    active: local   #application-local.yaml will cover the same attributes in  application.yaml
+
+  jackson:
+    serialization:
+      write-date-timestamps-as-nanoseconds: false
+    date-format: yyyy-MM-dd HH:mm:ss # set the date format
+
+  resources:
+    cache-period: 31556926
+    
+  mvc:
+    view:
+      date-format: yyyy-MM-dd
+    favicon:
+      enabled: false
+
+  velocity:
+    enabled: true
+    cache: false
+    dateToolAttribute: dateTool
+    properties:
+      velocimacro:
+        library: templates/VM_global_library.vm
+  #db
+  datasource:
+    url: jdbc:postgresql://localhost:5432/sywl
+    username: postgres
+    password: abc
+    test-on-borrow: true
+    test-while-idle: true
+    time-between-eviction-runs-millis: 60000
+    validation-query: select 1
+    validation-interval: 30000
+
+  #redis configuration
+  redis:
+    host: localhost
+    port: 6379
+
+  async:
+    core-pool-size: 2
+    max-pool-size: 20
+    queue-capacity: 200
+    thread-name-prefix: starter-async-executor
+
+  main:
+    banner-mode: log
+
+  #mq
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: sywl
+    password: sywl
+
+    tongtoolAddPackageExchange: tongtoolAddPackageExchange
+    tongtoolAddPackageQueue: tongtoolAddPackageQueue
+    tongtoolAddPackageRoutingKey: tongtoolAddPackageRoutingKey
+    bindTongtoolAddPackageConsumer: false
+
+    calculateSortingFreightExchange: calculateSortingFreightExchange
+    calculateSortingFreightQueue: calculateSortingFreightQueue
+    calculateSortingFreightRoutingKey: calculateSortingFreightRoutingKey
+    bindCalculateSortingConsumer: false
+
+    statementStatusExchange: statementStatusExchange
+    statementStatusQueue: statementStatusQueue
+    statementStatusRoutingKey: statementStatusRoutingKey
+    bindStatementStatusConsumer: false
+
+
+    financeExchange: financeExchange
+    financeQueue: financeQueue
+    financeRoutingKey: financeRoutingKey
+    bindFinanceConsumer: false
+
+    orderForecastExchange: orderForecastExchange
+    orderForecastQueue: orderForecastQueue
+    orderForecastRoutingKey: orderForecastRoutingKey
+    bindForecastConsumer: false
+
+
+
+    trackPushExchange: trackPushExchange
+    trackPushQueue: trackPushQueue
+    trackPushRoutingKey: trackPushRoutingKey
+    bindTrackPushConsumer: false
+
+    trackRecordExchange: trackRecordExchange
+    trackRecordQueue: trackRecordQueue
+    trackRecordRoutingKey: trackRecordRoutingKey
+    bindTrackRecordConsumer: false
+
+    
+    callbackLinehaulOrderinfoExchange: callbackLinehaulOrderinfoExchange
+    callbackLinehaulOrderinfoQueue: callbackLinehaulOrderinfoQueue
+    callbackLinehaulOrderinfoRoutingKey: callbackLinehaulOrderinfoRoutingKey
+    bindCallbackLinehaulOrderinfoConsumer: false
+
+    
+    financeSendMailExchange: financeSendMailExchange
+    financeSendMailQueue: financeSendMailQueue
+    financeSendMailRoutingKey: financeSendMailRoutingKey
+    bindFinanceSendMailConsumer: false
+    
+    temPackageDelExchange: temPackageDelExchange
+    temPackageDelQueue: temPackageDelQueue
+    temPackageDelRoutingKey: temPackageDelRoutingKey
+    bindTemPackageDelConsumer: false
+
+    financeCustomerExchange: financeCustomerExchange
+    financeCustomerQueue: financeCustomerQueue
+    financeCustomerRoutingKey: financeCustomerRoutingKey
+    bindFinanceCustomerConsumer: false
+
+    
+    addPackageExchange: addPackageExchange
+    addPackageQueue: addPackageQueue
+    addPackageRoutingKey: addPackageRoutingKey
+    bindAddPackageConsumer: false
+
+    
+    largePackageTransferExchange: largePackageTransferExchange
+    largePackageTransferQueue: largePackageTransferQueue
+    largePackageTransferRoutingKey: largePackageTransferRoutingKey
+    bindLargePackageTransferConsumer: false
+
+    
+    logisticsDetailsExchange: logisticsDetailsExchange
+    logisticsDetailsQueue: logisticsDetailsQueue
+    logisticsDetailsRoutingKey: logisticsDetailsRoutingKey
+    bindLogisticsDetailsConsumer: false
+
+    
+    hanyouExchange: hanyouExchange
+    hanyouQueue: hanyouQueue
+    hanyouRoutingKey: hanyouRoutingKey
+    bindHanyouConsumer: false
+
+
+    returnPackagesExchange: returnPackagesExchange
+    returnPackagesQueue: returnPackagesQueue
+    returnPackagesRoutingKey: returnPackagesRoutingKey
+    bindReturnPackagesConsumer: false
+    
+    
+    APILogExchange: APILogExchange
+    APILogQueue: APILogQueue
+    APILogRoutingKey: APILogRoutingKey
+    bindAPILogConsumer: false
+    
+    
+    winitLogisticsDetailsExchange: winitLogisticsDetailsExchange
+    winitLogisticsDetailsQueue: winitLogisticsDetailsQueue
+    winitLogisticsDetailsRoutingKey: winitLogisticsDetailsRoutingKey
+    bindWinitLogisticsDetailsConsumer: false
+    
+    
+    pushLogisticsDetailsExchange: pushLogisticsDetailsExchange
+    pushLogisticsDetailsQueue: pushLogisticsDetailsQueue
+    pushLogisticsDetailsRoutingKey: pushLogisticsDetailsRoutingKey
+    bindPushLogisticsDetailsConsumer: false
+    
+    
+    trackingLogisticsDetailsExchange: trackingLogisticsDetailsExchange
+    trackingLogisticsDetailsQueue: trackingLogisticsDetailsQueue
+    trackingLogisticsDetailsRoutingKey: trackingLogisticsDetailsRoutingKey
+    bindTrackingLogisticsDetailsConsumer: false
+    
+    
+    mabangLogisticsDetailsExchange: mabangLogisticsDetailsExchange
+    mabangLogisticsDetailsQueue: mabangLogisticsDetailsQueue
+    mabangLogisticsDetailsRoutingKey: mabangLogisticsDetailsRoutingKey
+    bindMabangLogisticsDetailsConsumer: false
+
+    
+    timerTaskManagerExchange: timerTaskManagerExchange
+    timerTaskManagerQueue: timerTaskManagerQueue
+    timerTaskManagerRoutingKey: timerTaskManagerRoutingKey
+    bindTimerTaskManagerConsumer: false
+    
+    
+    universalTescoLogisticsDetailsExchange: universalTescoLogisticsDetailsExchange
+    universalTescoLogisticsDetailsQueue: universalTescoLogisticsDetailsQueue
+    universalTescoLogisticsDetailsRoutingKey: universalTescoLogisticsDetailsRoutingKey
+    bindUniversalTescoLogisticsDetailsConsumer: false
+
+    esbLogisticsDetailsExchange: esbLogisticsDetailsExchange
+    esbLogisticsDetailsQueue: esbLogisticsDetailsQueue
+    esbLogisticsDetailsRotingKey: esbLogisticsDetailsRotingKey
+    bindESBLogisticsDetailsConsumer: false
+    
+    cnTrackExchange: cnTrackExchange
+    cnTrackQueue: cnTrackQueue
+    cnTrackRoutingKey: cnTrackRoutingKey
+    bindCNTrackConsumer: false
+
+multipart:
+  maxFileSize: 50Mb
+  maxRequestSize: 50Mb
+
+
+security:
+  ignored: /lib/**,**/css/**,**/js/**,**/images/**,**/img/**,**/favicon.ico,autoSorting/**
+    
+server:
+  port: 9090
+  compression:
+    enabled: false
+  session:
+    timeout: 3600
+
+# for actuator management interface
+management:
+  port: 8088
+
+#about mybatis
+mybatis:
+  config:  classpath:/mybatis-config.xml
+  mapperLocations: classpath:/com/sunyou/**/mapper/*.xml
+  typeAliasesPackage: com.sunyou.**.model
+
+
+# Configurations for each client
+hdxt:
+  admin:
+    urlContext: /admin
+    #loginPage: /login
+    noLoginUrls: /help,/about,/login
+  client:
+    urlContext: /client
+    #loginPage: /login
+    noLoginUrls: /help,/about,/signup/**,/login/reset/**,/login,/pay/Payonnerback/**,/pay/alipay/sync/**,/pay/alipay/notify/**,/pay/wechatback/**
+  logistics:
+    urlContext: /logistics
+    noLoginUrls: /**
+  app:
+    urlContext: /app
+  api:
+    urlContext: /api 
+  wechat:
+    urlContext: /wechat
+  codeSequence:
+    syncTask:
+      enable: false      ## 默认不启用
+      interval: 1        ## 每隔1秒执行一次
+    functionPhase: 3     ## 功能阶段: 1 - 从PG读取codeValue; 2 - 从PG读取codeValue,并与redis中的比对，一定次数相同后，才能进入下一阶段; 3 - 从redis读取code;
+
+pageSize: 50 # add by zengxf 2016.03.30
+
+#configuration for remote file api server
+file:
+  local:
+    rootDir: d:/file/
+  remote:
+    baseurl: http://localhost:9090/strato.file.remote/default
+    viewurl: http://localhost:9090/file
+    request: strato.file.remote
+    id: default
+    rootDir: d:/file/
+    password:
+ 
+#configuration for system font     
+system:
+  font:
+    fontUrl: d:/file/font
+  
+#configuration for log
+logging:
+  path: /logs/
+#  file: d:/sywl.log
+  level:
+    root: WARN
+    org.springframework: INFO
+    com.sunyou.hdxt.common.tool.sequence.mapper.SequenceExtendMapper: INFO
+    com.sunyou.hdxt: DEBUG
+    
+
+package:
+  upload:
+    file:
+      maxSize: 5
+    
+### sys msg
+sms:
+  url: http://web.cr6868.com/asmx/smsservice.aspx
+  username: 13392809550
+  password: 780E7CB5A9971E4C6CB1A86113B4
+  
+##test
+##production(production), test(sandbox)
+environment: sandbox
+##environment: production
+
+
+exchange:
+  rate:
+    url: http://openexchangerates.org/api/latest.json
+    appId: 250392ad70044c95878ca7778ce9e6dd
+
+send:
+  email:
+    exceedTime: 5
+
+passport:
+  home: http://localhost:9090/
+###支付接口回调地址--通知根路径####
+pay:
+  return:
+    url: http://localhost:9090/client
+##payoneer测试环境回调ip来源,url为payoneer的Api地址
+payoneer:
+  ip: 80.74.104.18,82.163.141.4,50.74.143.106
+  url: https://api.sandbox.payoneer.com/Payouts/HttpApi/API.aspx
+
+recyclePng: /template/images/recycle.png
+destroyPng: /template/images/destroy.png
+logoPng: /template/images/logo.png
+KOREA_HEADPng: /template/images/KOREA_HEAD.png
+KOREA_LEFTPng: /template/images/KOREA_LEFT.png
+US_MARKERPng: /template/images/US_MARKERPng.png
+
+##马邮接口
+mayou:
+  sendRequest:
+    hour: 6  ##马邮获取物流详情的时间间隔
+  timing: 0 0 12 1 1 *  ##马邮接口定时执行时间,默认不启用(set to this "0 0 0/6 * * ?" to enable)
+  timer: 
+    status: 0  ##马邮定时器的状态，1为开启，0为停用
+  channelId: 165
+
+##俄罗斯接口
+russianApi:
+  sendRequest:
+    hour: 6  ##俄罗斯获取物流详情的时间间隔
+  timing: 0 0 3/6 * * ?  ##俄罗斯接口定时执行时间,默认不启用(set to this "0 0 0/6 * * ?" to enable)
+  timer: 
+    status: 0  ##马邮定时器的状态，1为开启，0为停用
+  #channelId: 137,124,141,20,71,102,133,138,121,117,119,165
+  
+## 菜鸟接口
+cainiao:
+  interface:
+       cpCode:                    ## 菜鸟提供的CP资源CODE与邮路对应关系   
+        DISTRIBUTOR_1879732: 165  ## 165为邮路的id
+        DISTRIBUTOR_1879931: 136  ## 136为邮路的id   
+  receiveMessage:
+       type: 3                    ## CP接收菜鸟下发的报文类型(1-旧报文, 2-新报文, 3-新旧报文)
+    
+  
+##韩邮API
+hanyouAPI:
+  sendRequest:
+    hour: 6  ##韩邮API获取物流详情的时间间隔
+  timing: 0 0 0/6 * * ?  ##韩邮API接口定时执行时间
+  timer:
+    status: 0  ##韩邮API定时器的状态, 1为开启，0为停用
+    
+##结单定时器设置
+financeBillTask:
+  timing: 0 0 8 * * ?  ##执行时间段
+  timer:
+    status: 0  ##定时器的状态, 1为开启，0为停用
+    
+##通途API
+tongtuAPI:
+  timing: 0 0 0 1 1 ?  ##通途API接口定时执行时间(默认不启用的，正常配置应该是： 0 */1 * * * ?)
+  timer:
+    status: 0  ##通途API定时器的状态, 1为开启，0为停用
+
+##定时器管理功能是否启动后查询开启
+TimerTaskManage:
+  status: 0  ##1为开启，0为停用
+    
+    
+## 消息队列每次操作的包裹数量
+packageBatchSize: 100
+
+###微信公众号支付接口回调地址
+weChatPublicnoPay:
+  return:
+    url: http://106.75.133.17:7070/wechat
+
+
