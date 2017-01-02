@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;com.springboot.parent.springboot_system&apos; to &apos;com.springboot&apos;&#x0D;&#x0A;- Original project: &apos;springboot-system&apos;&#x0D;&#x0A;- Original element: &apos;springboot-system/src/main/java/com.springboot.parent.springboot_system&apos;&#x0D;&#x0A;- Renamed element: &apos;springboot-system/src/main/java/com.springboot&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;com.springboot.parent.springboot_system&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src\/main\/java&lt;com.springboot.parent.springboot_system" name="com.springboot" qualified="false" references="true" stamp="1481270210993" textual="false" version="1.0"/>
+</session>
